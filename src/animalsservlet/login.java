@@ -47,7 +47,7 @@ public class login extends HttpServlet {
 			out.println(String.format(messageFormat, "password"));
 			return;
 		}
-		if (username.equals("cys") && password.equals("cys123")) {
+		if (username.equals("csy") && password.equals("csy123")) {
 			out.println(true);
 			return;
 		} else {
