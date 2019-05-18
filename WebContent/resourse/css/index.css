@@ -1,0 +1,8 @@
+.table tbody tr td{
+    height: 150px;
+    vertical-align: middle;
+}
+
+.table thead tr th{
+    vertical-align: middle;
+}

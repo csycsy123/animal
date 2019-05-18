@@ -7,10 +7,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class jdbcuilts {
-	static final String url="jdbc:mysql://127.0.0.1:3306/animals";
-	static final String user="root";
-	static final String password="newpasswd";  
-	static{
+	static final String url = "jdbc:mysql://212.64.21.58:3306/animals?charset=utf-8";
+	static final String user = "animal";
+	static final String password = "123456";
+	static {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
@@ -18,31 +18,31 @@ public class jdbcuilts {
 			e.printStackTrace();
 		}
 	}
-	
-	public static Connection getConnection(){
-		Connection conn=null;
+
+	public static Connection getConnection() {
+		Connection conn = null;
 		try {
-			conn=DriverManager.getConnection(url,user,password);
+			conn = DriverManager.getConnection(url, user, password);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return conn;
 	}
-	
-	public static void free(Connection conn,Statement stat,ResultSet rs){
+
+	public static void free(Connection conn, Statement stat, ResultSet rs) {
 		try {
 			conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
+		} finally {
 			try {
 				stat.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}finally{
+			} finally {
 				try {
 					rs.close();
 				} catch (SQLException e) {

@@ -28,30 +28,32 @@ public class addressservlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=utf-8");
-		
-		address add=new address();
-				List<addcall> adds=add.Query();
-				
-				PrintWriter out =response.getWriter();
-				JSONObject jo=null;
-				JSONArray ja=new JSONArray();
-				
-				if( adds.size()>0){
-					for(addcall ad:adds){
-						jo=new JSONObject(ad);
-						ja.put(jo);
-					}
-				}
-				out.println(ja.toString());
+
+		address add = new address();
+		List<addcall> adds = add.Query();
+
+		PrintWriter out = response.getWriter();
+		JSONObject jo = null;
+		JSONArray ja = new JSONArray();
+
+		if (adds.size() > 0) {
+			for (addcall ad : adds) {
+				jo = new JSONObject(ad);
+				ja.put(jo);
+			}
+		}
+		out.println(ja.toString());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

@@ -7,39 +7,60 @@ public class Animals {
 	String description;
 	int age;
 	int distance;
+	int hot;
+
+	public int getHot() {
+		return hot;
+	}
+
+	public void setHot(int hot) {
+		this.hot = hot;
+	}
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getCover() {
 		return cover;
 	}
+
 	public void setCover(String cover) {
 		this.cover = cover;
 	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	public int getAge() {
 		return age;
 	}
+
 	public void setAge(int age) {
 		this.age = age;
 	}
+
 	public int getDistance() {
 		return distance;
 	}
+
 	public void setDistance(int distance) {
 		this.distance = distance;
 	}

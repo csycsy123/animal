@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Animals Manager</title>
+
+    <!-- Bootstrap -->
+    <link href="resourse/css/bootstrap.min.css" rel="stylesheet">
+    <link href="resourse/css/index.css" rel="stylesheet">
+
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="resourse/js/jquery-3.4.1.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="resourse/js/bootstrap.min.js"></script>
+    <script src="resourse/js/index.js"></script>
+</head>
+<body >
+
+
+<button id="btn_msg" style="display: none" type="button" class="btn btn-primary" data-toggle="modal" data-target=".msg-modal-sm"></button>
+
+<!--告警模态框 -->
+<div class="modal fade msg-modal-sm" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Message</h4>
+            </div>
+            <div class="modal-body" id="msg">
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button id="btn_edit_modal" style="display: none" type="button" class="btn btn-primary" data-toggle="modal" data-target=".edit-modal"></button>
+<!--添加/修改模态框-->
+<div class="modal fade edit-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="edit-title"></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="id" class="col-sm-2 control-label">ID</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="id" disabled = "disabled">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 control-label">名称</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cover" class="col-sm-2 control-label">照片地址</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="cover">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="description" class="col-sm-2 control-label">描述</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="description">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="distance" class="col-sm-2 control-label">距离</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="distance">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="age" class="col-sm-2 control-label">年龄</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="age">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="hot" class="col-sm-2 control-label">热度</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="hot">
+                        </div>
+                    </div>
+                </form>
+                <div class="col-sm-10 col-sm-offset-2">
+                    <p style="color:red;display: none"   id="msg_form"></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="btn_close_edit">Close</button>
+                <button type="button" class="btn btn-primary" onclick="editAnimal()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--登陆模态框-->
+<div class="modal fade login-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" >Login</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="username" class="col-sm-2 control-label">用户名</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="username" placeholder="username">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-sm-2 control-label">密码</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" id="password" placeholder="password">
+                        </div>
+                    </div>
+                </form>
+                <div class="col-sm-10 col-sm-offset-2">
+                    <p style="color:red;display: none"  id="msg_login" ></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="btn_close_login">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="login()">Login</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--以上是模态框-->
+
+    <div class="container-fluid">
+        <div class="row" style="background-color: #594080;height: 60px">
+            <div class="col-md-3 col-md-offset-1" style="padding-top: 10px"><b style="font-size: 30px;">Ainimals Manager</b></div>
+            <div class="col-md-1 col-md-offset-5" style="padding-top: 10px" id="login_info">
+                <button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".login-modal">Login</button>
+            </div>
+        </div>
+        <div class="row" style="padding-top: 10px">
+            <div class="col-md-1"></div>
+            <div class="col-md-10" style="padding-top: 10px">
+                <div class="row" >
+                    <table class="table table-hover col-md-12" >
+                        <thead>
+                            <tr>
+                                <th class="col-md-1">#</th>
+                                <th class="col-md-1">名称</th>
+                                <th class="col-md-3">照片</th>
+                                <th class="col-md-2">描述</th>
+                                <th class="col-md-1">距离</th>
+                                <th class="col-md-1">年龄</th>
+                                <th class="col-md-1">热度</th>
+                                <th class="col-md-2">操作</th>
+                            </tr>
+                        </thead>
+                       <tbody id="animals_tbody">
+                       </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</body>
+</html>
